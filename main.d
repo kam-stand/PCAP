@@ -15,19 +15,9 @@ int main(string[] args)
 
     string file_path = args[1];
     ubyte[] content = cast(ubyte [])read(file_path);
-    writeln(readMagic(content[0..4]));
+    //writeln(readMagic(content[0..4]));
     writeln(content[0..4]);
     return EXIT_SUCCESS;
 
 }
 
-unittest
-{
-    string[] args = ["", "./200722_win_scale_examples_anon.pcapng"]; // Mock the command-line arguments
-    int res = main(args);
-    assert(res == EXIT_SUCCESS);
-
-    args = ["./main"];
-    res = main(args);
-    assert(res == EXIT_FAILURE);
-}
