@@ -1,6 +1,6 @@
 input=$1
 
-ldc2 -wi ./*.d
+ldc2 -w -vgc ./*.d
 
 ./main $input
 

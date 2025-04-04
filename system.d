@@ -61,7 +61,7 @@ ENDIAN determineEndian(ref ubyte[] content)
     return ENDIAN.Invalid;
 }
 
-uint16_t read_u16(ref ubyte[] content, in ENDIAN endian)
+uint16_t read_u16(ubyte[] content, in ENDIAN endian)
 {
 
     uint16_t value;
@@ -84,7 +84,7 @@ uint16_t read_u16(ref ubyte[] content, in ENDIAN endian)
 
 
 
-uint32_t read_u32(ref ubyte[] content, in ENDIAN endian)
+uint32_t read_u32(ubyte[] content, in ENDIAN endian)
 {
 
     uint32_t value;
