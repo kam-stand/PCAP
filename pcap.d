@@ -79,10 +79,10 @@ FileHeader getHeader(ref ubyte[] content, in ENDIAN e)
   uint16_t minor = read_u16(major_minor[2 .. major_minor.length], e);
   uint32_t magic = read_u32(c[0], e);
   uint16_t linkType = read_u16(c[5], e);
-  writefln("snapLen: %d", snapLen);
-  writefln("major: %d", major);
-  writefln("minor: %d", minor);
-  writefln("magic: %02x", magic);
-  writefln("linkType: %d", linkType);
+  h.magicNumber = magic;
+  h.linkType = linkType;
+  h.snapLen = snapLen;
+  h.minorVersion = minor;
+  h.majorVersion = major;
   return h;
 }
