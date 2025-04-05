@@ -1,7 +1,6 @@
-input=$1
+pcap_file=$1
+ldc2 -w ./src/*.d -of=bin/pcap
+./bin/pcap $pcap_file
 
-ldc2 -w -vgc ./*.d
 
-./main $input
-
-rm ./*.o ./main
+rm ./bin/pcap ./bin/*.o
