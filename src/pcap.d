@@ -10,7 +10,6 @@ import std.algorithm;
 enum HEADER_LENGTH = 24; // header is 24 octets
 enum MAJOR_MINOR_LENGTH = 2;
 enum PACKET_HEADER_LENGTH = 16;
-
 enum HEADER_CHUNKS // every 4 bytes represent a portion of the header
 {
   MAGIC = 0,
@@ -107,6 +106,7 @@ FileHeader getHeader(ref ubyte[] content, in ENDIAN e)
   uint32_t snapLen = read_u32(fileChunks[HEADER_CHUNKS.SNAP_LEN], e);
   uint16_t linkType = read_u16(fileChunks[HEADER_CHUNKS.LINK_TYPE], e);
   FileHeader header = {magic, major, minor, snapLen, linkType};
+  writefln("%02x", magic);
   return header;
 }
 
@@ -114,8 +114,20 @@ FileHeader getHeader(ref ubyte[] content, in ENDIAN e)
 PacketRecord getPackets(ref ubyte[] content, in ENDIAN e)
 {
   PacketRecord p;
-  ubyte [] packets = content[HEADER_LENGTH .. $];
-  writeln(packets[0 .. PACKET_HEADER_LENGTH]);
+  ubyte[] packets = content[HEADER_LENGTH .. $];
+  writeln(getPacketHeader(packets));
   return p;
+}
+
+ubyte[] getPacketHeader(ubyte [] slice)
+{
+  ubyte[] b;
+  auto packetHeaderChunks = chunks(slice, MAGIC_HEADER);
+  writeln(packetHeaderChunks[0]);
+  writefln("%d ", read_u32(packetHeaderChunks[0], ENDIAN.Little));
+  writefln("%d ", read_u32(packetHeaderChunks[1], ENDIAN.Little));
+  writefln("%d", read_u32(packetHeaderChunks[2], ENDIAN.Little));
+  writefln("%d", read_u32(packetHeaderChunks[3], ENDIAN.Little));
+  return b;
 }
 
