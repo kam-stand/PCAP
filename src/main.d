@@ -27,8 +27,8 @@ int main(string[] args)
 
     ubyte[] content = read_content(args[1]);
     ENDIAN e = determineEndian(content);
-    writeln(getHeader(content, e));
-    writeln(getPackets(content, e));
+    getHeader(content, e);
+    (getPackets(content, e));
     
 
     return EXIT_SUCCESS;

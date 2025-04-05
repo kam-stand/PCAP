@@ -115,10 +115,7 @@ PacketRecord getPackets(ref ubyte[] content, in ENDIAN e)
 {
   PacketRecord p;
   ubyte [] packets = content[HEADER_LENGTH .. $];
-  foreach (ubyte [] c; chunks(packets, PACKET_HEADER_LENGTH))
-  {
-    writeln(c); 
-    break;
-  }
+  writeln(packets[0 .. PACKET_HEADER_LENGTH]);
   return p;
 }
+
