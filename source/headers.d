@@ -2,8 +2,7 @@ module headers;
 import system;
 import std.stdio;
 import std.stdint;
-
-
+import core.stdc.stdlib;
 
 /**
                            1                   2                   3
@@ -23,43 +22,43 @@ import std.stdint;
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 **/
 
-
 struct FILE_HEADER
 {
-    uint32_t magic;
-    uint16_t major;
-    uint16_t minor;
-    /*
+  uint32_t magic;
+  uint16_t major;
+  uint16_t minor;
+  /*
     * reserved1
     * reserved2
     */
-    uint32_t snapLen;
-    uint16_t linkType;
+  uint32_t snapLen;
+  uint16_t linkType;
 }
 
 enum FILE_HEADER_LENGTH = 24; // the file header for pcap is 24 octets/bytes
-enum FILE_HEADER_OFFSETS 
+enum FILE_HEADER_OFFSETS
 {
   MAGIC = 0,
   MAJOR_MINOR = 4,
   SNAP_LEN = 16,
   LINK_TYPE = 20
 }
+
 enum BYTE_OFFSET = 4;
 
 FILE_HEADER getFileHeader(ref File f, ENDIAN e)
 {
-    ubyte[FILE_HEADER_LENGTH] header;
-    f.rawRead(header);
-  
-    FILE_HEADER fh;
-    fh.magic = convert_u32(header[FILE_HEADER_OFFSETS.MAGIC .. $], e);
-    fh.major = convert_u16(header[FILE_HEADER_OFFSETS.MAJOR_MINOR .. $][0 .. 2], e);
-    fh.minor = convert_u16(header[FILE_HEADER_OFFSETS.MAJOR_MINOR .. $][2 .. $], e);
-    fh.snapLen = convert_u32(header[FILE_HEADER_OFFSETS.SNAP_LEN .. $], e);
-    fh.linkType = convert_u16(header[FILE_HEADER_OFFSETS.LINK_TYPE .. $], e);
-    
-    return fh;
+  ubyte[FILE_HEADER_LENGTH] header;
+  f.rawRead(header);
+
+  FILE_HEADER fh;
+  fh.magic = convert_u32(header[FILE_HEADER_OFFSETS.MAGIC .. $], e);
+  fh.major = convert_u16(header[FILE_HEADER_OFFSETS.MAJOR_MINOR .. $][0 .. 2], e);
+  fh.minor = convert_u16(header[FILE_HEADER_OFFSETS.MAJOR_MINOR .. $][2 .. $], e);
+  fh.snapLen = convert_u32(header[FILE_HEADER_OFFSETS.SNAP_LEN .. $], e);
+  fh.linkType = convert_u16(header[FILE_HEADER_OFFSETS.LINK_TYPE .. $], e);
+
+  return fh;
 
 }
 
@@ -82,7 +81,6 @@ FILE_HEADER getFileHeader(ref File f, ENDIAN e)
       +---------------------------------------------------------------+
 */
 
-
 struct PACKET_HEADER
 {
   uint32_t seconds;
@@ -101,7 +99,6 @@ enum PACKET_HEADER_OFFSETS
   OG_LEN = 12
 }
 
-
 PACKET_HEADER getPacketHeader(ref File f, ENDIAN e)
 {
   ubyte[PACKET_HEADER_LENGTH] header;
@@ -114,13 +111,10 @@ PACKET_HEADER getPacketHeader(ref File f, ENDIAN e)
   return ph;
 }
 
-
-
 struct PACKET_DATA
 {
-  PACKET_HEADER header;
-  ubyte[] data; 
-
+  PACKET_HEADER header; 
+  ubyte[] data;
 }
 
 PACKET_DATA getPacketData(ref File f, ENDIAN e, ref PACKET_HEADER ph)
@@ -134,24 +128,23 @@ PACKET_DATA getPacketData(ref File f, ENDIAN e, ref PACKET_HEADER ph)
   return pd;
 }
 
-
 enum LINK_TYPE : uint16_t
 {
-    ETHERNET  = 1,
-    RAW_IP    = 101,
-    WIRELESS  = 105,
-    RAW_IPV4  = 228
+  ETHERNET = 1,
+  RAW_IP = 101,
+  WIRELESS = 105,
+  RAW_IPV4 = 228
 }
 
 void decodePacketData(ref PACKET_DATA pd, LINK_TYPE t)
 {
-    switch(t)
-    {
-        case LINK_TYPE.ETHERNET:
-            writeln(pd.data);
-            break;
-        default:
-            writeln("Unknown or unsupported link type");
-            break;
-    }
+  switch (t)
+  {
+  case LINK_TYPE.ETHERNET:
+    writeln(pd.data);
+    break;
+  default:
+    writeln("Unknown or unsupported link type");
+    break;
+  }
 }
