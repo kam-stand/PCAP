@@ -51,8 +51,6 @@ FILE_HEADER getFileHeader(ref File f, ENDIAN e)
 {
     ubyte[FILE_HEADER_LENGTH] header;
     f.rawRead(header);
-    
-    writeln(header);
   
     FILE_HEADER fh;
     fh.magic = convert_u32(header[FILE_HEADER_OFFSETS.MAGIC .. $], e);
