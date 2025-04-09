@@ -10,8 +10,6 @@ void main(string[] args)
     FILE_HEADER fh = getFileHeader(f, e);
     PACKET_HEADER ph = getPacketHeader(f, e);
     PACKET_DATA pd = getPacketData(f, e, ph);
-    writeln(fh);
-    writeln(ph);
-    writeln(pd);
+    decodePacketData(pd, cast(LINK_TYPE)fh.linkType);
     f.close();
 }
