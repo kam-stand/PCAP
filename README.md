@@ -8,7 +8,9 @@ a command line tool and library that can be used to extract and analyze .pcap fi
 2. provide reasonable layout to view and inspect packet data similar to [wireshark](https://www.wireshark.org/) and [tcpdump](https://www.tcpdump.org/)
 
 
+# Information
 
+When reading on ethernet frames and different link types. its important to note we are monstly reading data that is being transmitted from physical wires or wireless communication. In a `.pcap` file we are capturing from the end of this transmission into a computer. Hence, the preamble and  sfd are not present :alien:
 
 # Resources
 
