@@ -128,23 +128,3 @@ PACKET_DATA getPacketData(ref File f, ENDIAN e, ref PACKET_HEADER ph)
   return pd;
 }
 
-enum LINK_TYPE : uint16_t
-{
-  ETHERNET = 1,
-  RAW_IP = 101,
-  WIRELESS = 105,
-  RAW_IPV4 = 228
-}
-
-void decodePacketData(ref PACKET_DATA pd, LINK_TYPE t)
-{
-  switch (t)
-  {
-  case LINK_TYPE.ETHERNET:
-    writeln(pd.data);
-    break;
-  default:
-    writeln("Unknown or unsupported link type");
-    break;
-  }
-}

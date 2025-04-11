@@ -1,6 +1,7 @@
 import std.stdio;
 import system;
 import headers;
+import packet_data;
 
 
 void main(string[] args) 
@@ -10,6 +11,7 @@ void main(string[] args)
     FILE_HEADER fh = getFileHeader(f, e);
     PACKET_HEADER ph = getPacketHeader(f, e);
     PACKET_DATA pd = getPacketData(f, e, ph);
-    decodePacketData(pd, cast(LINK_TYPE)fh.linkType);
+    //writeln(pd);
+    ETHERNET_HEADER et = getEthernetHeader(pd, e);
     f.close();
 }
