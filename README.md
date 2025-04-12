@@ -10,7 +10,7 @@ a command line tool and library that can be used to extract and analyze .pcap fi
 
 # Information
 
-When reading on ethernet frames and different link types. its important to note we are monstly reading data that is being transmitted from physical wires or wireless communication. In a `.pcap` file we are capturing from the end of this transmission into a computer. Hence, the preamble and  sfd are not present :alien:
+When reading on ethernet frames and different link types. its important to note we are mostly reading data that is being transmitted from physical wires or wireless communication. In a `.pcap` file we are capturing from the end of this transmission into a computer. Hence, the preamble and  sfd are not present :alien:
 
 # Resources
 

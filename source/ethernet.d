@@ -1,4 +1,4 @@
-module packet_data;
+module ethernet;
 import headers;
 import system;
 import std.stdio;
@@ -63,3 +63,7 @@ enum DATAGRAM_TYPE
   IPV6 = 0x86dd
 }
 
+struct IP_PACKET
+{
+  
+}

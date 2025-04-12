@@ -1,7 +1,7 @@
 import std.stdio;
 import system;
 import headers;
-import packet_data;
+import ethernet;
 
 
 void main(string[] args) 
