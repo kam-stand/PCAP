@@ -1,6 +1,6 @@
 # PCAP command line tool and library 
 
-a command line tool and library that can be used to extract and analyze .pcap file similar to wireshark and tcpdump
+a command line tool and library that can be used to extract and analyze `.pcap` file similar to wireshark and tcpdump
 
 # Utility
 
@@ -10,7 +10,24 @@ a command line tool and library that can be used to extract and analyze .pcap fi
 
 # Information
 
-When reading on ethernet frames and different link types. its important to note we are mostly reading data that is being transmitted from physical wires or wireless communication. In a `.pcap` file we are capturing from the end of this transmission into a computer. Hence, the preamble and  sfd are not present :alien:
+- When reading on ethernet frames and different link types. its important to note we are mostly reading data that is being transmitted from physical wires or wireless communication. In a `.pcap` file we are capturing from the end of  this transmission into a computer. Hence, the preamble and  sfd are not present :alien:
+
+🧩 The Key Distinction: File Format vs Protocol Format
+
+There are two layers here:
+1. PCAP file format = endianness depends on the magic number
+
+    The PCAP file format starts with a magic number in the first 4 bytes.
+
+    That number tells you how the rest of the file should be interpreted (endianness-wise).
+
+    So for things like packet headers, timestamps, and lengths — yes, you must honor this endianness.
+
+2. Network protocols (Ethernet, IP, TCP, etc.) = always big-endian
+
+    Once you're inside the packet data (like the Ethernet frame), the protocol itself dictates network byte order.
+
+    And network byte order = big-endian, always — regardless of what the pcap file's endianness is.
 
 # Resources
 
