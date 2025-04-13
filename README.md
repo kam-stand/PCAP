@@ -8,6 +8,31 @@ a command line tool and library that can be used to extract and analyze `.pcap` 
 2. provide reasonable layout to view and inspect packet data similar to [wireshark](https://www.wireshark.org/) and [tcpdump](https://www.tcpdump.org/)
 
 
+
+# How to run
+
+1. install a D lang compiler from the following [link](https://dlang.org/download.html)
+
+2. clone the repository 
+
+```sh
+git clone https://github.com/kam-stand/PCAP.git
+
+```
+3. `cd` into project directory
+```sh
+cd PCAP_DUMP
+```
+
+4. run the bash script with `path/to/pcap/file`
+
+> ☝️ optional : you can make the bash script an executable by running the command chmod `./run.sh`
+
+```sh
+./run.sh <path/to/pcap/file>
+
+```
+
 # Information
 
 - When reading on ethernet frames and different link types. its important to note we are mostly reading data that is being transmitted from physical wires or wireless communication. In a `.pcap` file we are capturing from the end of  this transmission into a computer. Hence, the preamble and  sfd are not present :alien:
