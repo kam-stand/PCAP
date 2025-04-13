@@ -2,7 +2,6 @@ module headers;
 import system;
 import std.stdio;
 import std.stdint;
-import core.stdc.stdlib;
 
 /**
                            1                   2                   3
@@ -121,10 +120,8 @@ PACKET_DATA getPacketData(ref File f, ENDIAN e, ref PACKET_HEADER ph)
 {
   PACKET_DATA pd;
   pd.header = ph;
-  ubyte[] data;
-  data.length = ph.capturedLength;
-  f.rawRead(data);
-  pd.data = data;
+  pd.data =  new ubyte[](ph.capturedLength);
+  f.rawRead(pd.data);
   return pd;
 }
 

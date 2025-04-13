@@ -53,3 +53,8 @@ certain network protocols come with different formats. The following diagrams pr
 below shows the different way to interpret the actual payload
 
 ![IEEE 802.3 FRAME FORMAT](./assets/IEEE_802.3_FORMAT.jpg)
+
+
+format of an IP packet
+
+![IP DATAGRAM](./assets/ip-packet-header-fields.png)
