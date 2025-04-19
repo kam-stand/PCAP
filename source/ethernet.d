@@ -95,7 +95,54 @@ void printIp(ref PACKET_DATA pd)
 enum IPV4_HEADER_LENGTH = 20; // minimum IP header length if there is an option fields we can append
 
 
-struct IPV4
+enum IPV4_FIELD_OFFSETS
 {
+    Version        = 0,
+    IHL            = 4,
+    TOS            = 8,
+    TotalLength    = 16,
+    Identification = 32,
+    FlagsFragOff   = 48,
+    TTL            = 64,
+    Protocol       = 72,
+    HeaderChecksum = 80,
+    SourceAddr     = 96,
+    DestAddr       = 128
+}
+
+enum IPV4_FIELD_LENGTHS
+{
+    Version        = 4,
+    IHL            = 4,
+    TOS            = 8,
+    TotalLength    = 16,
+    Identification = 16,
+    FlagsFragOff   = 16,
+    TTL            = 8,
+    Protocol       = 8,
+    HeaderChecksum = 16,
+    SourceAddr     = 32,
+    DestAddr       = 32
+}
+
+
+/** 
+ * Each header field in the tcp has a specific length and offset
+ */
+
+struct IPV4_PACKETS
+{
+  ubyte[IPV4_FIELD_LENGTHS.Version] ver;
+  ubyte[IPV4_FIELD_LENGTHS.IHL] ihl;
+  ubyte[IPV4_FIELD_LENGTHS.TOS] tos;
+  ubyte[IPV4_FIELD_LENGTHS.TotalLength] totallength;
+  ubyte[IPV4_FIELD_LENGTHS.Identification] identification;
+  ubyte[IPV4_FIELD_LENGTHS.FlagsFragOff] flagsfragoff;
+  ubyte[IPV4_FIELD_LENGTHS.TTL] ttl;
+  ubyte[IPV4_FIELD_LENGTHS.Protocol] protocol;
+  ubyte[IPV4_FIELD_LENGTHS.HeaderChecksum] headerchecksum;
+  ubyte[IPV4_FIELD_LENGTHS.SourceAddr] sourceaddr;
+  ubyte[IPV4_FIELD_LENGTHS.DestAddr] destaddr;
+  ubyte[] data;
   
 }

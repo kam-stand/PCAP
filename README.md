@@ -83,3 +83,6 @@ below shows the different way to interpret the actual payload
 format of an IP packet
 
 ![IP DATAGRAM](./assets/ip-packet-header-fields.png)
+
+
+![Detailed IPV4 packet](./assets/IPv4_Packet-en.svg.png)
