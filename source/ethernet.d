@@ -46,91 +46,88 @@ ETHERNET_HEADER getEthernetHeader(ref PACKET_DATA pd, ENDIAN e)
 enum ETHERNET_FRAME
 {
   ETHERNET_II = 1536,
-  IEEE_802_3 = 1500, 
+  IEEE_802_3 = 1500,
   INVALID
 }
-
 
 enum DATAGRAM_TYPE
 {
   IPV4 = 0x0800,
-  ARP =  0x0806,
-  IPX =  0x8137,
+  ARP = 0x0806,
+  IPX = 0x8137,
   IPV6 = 0x86dd
 }
 
-
 void printIp(ref PACKET_DATA pd)
 {
-      ubyte[] ipDatagram = pd.data[MAC_HEADER .. $];
-    writeln("IP Datagram Length: ", ipDatagram.length);
-    writeln("IP Datagram (bytes): ", ipDatagram);
+  ubyte[] ipDatagram = pd.data[MAC_HEADER .. $];
+  writeln("IP Datagram Length: ", ipDatagram.length);
+  writeln("IP Datagram (bytes): ", ipDatagram);
 
-    if (ipDatagram.length < 20) {
-        writeln("Error: IP datagram too short to contain a full header.");
-        return;
-    }
+  if (ipDatagram.length < 20)
+  {
+    writeln("Error: IP datagram too short to contain a full header.");
+    return;
+  }
 
-    ubyte[] header = ipDatagram[0 .. IPV4_HEADER_LENGTH];
-    writeln("First 3 bytes of header: ", header[0 .. 3]); // Corrected slice
+  ubyte[] header = ipDatagram[0 .. IPV4_HEADER_LENGTH];
+  writeln("First 3 bytes of header: ", header[0 .. 3]); // Corrected slice
 
-    // Extract Version and IHL from the first byte
-    ubyte versionIhlByte = header[0];
-    ubyte v1 = versionIhlByte >> 4; // Shift right by 4 bits to get the version
-    ubyte ihl = versionIhlByte & 0x0F;    // Mask with 00001111 to get the IHL
+  // Extract Version and IHL from the first byte
+  ubyte versionIhlByte = header[0];
+  ubyte v1 = versionIhlByte >> 4; // Shift right by 4 bits to get the version
+  ubyte ihl = versionIhlByte & 0x0F; // Mask with 00001111 to get the IHL
 
-    // Extract TOS (Type of Service) from the second byte
-    ubyte tos = header[1];
+  // Extract TOS (Type of Service) from the second byte
+  ubyte tos = header[1];
 
-    // Extract Total Length from the third and fourth bytes (big-endian)
-    //ushort totalLength = to!(ushort)([header[2], header[3]]); // Combine bytes
-    uint16_t totalLength = (header[2] + header[3]);
-    writeln("IP Version: ", v1);
-    writeln("IHL (Header Length in 32-bit words): ", ihl);
-    writeln("Header Length (bytes): ", ihl * 4);
-    writeln("TOS (Type of Service): ", tos);
-    writeln("Total Length: ", totalLength);
+  // Extract Total Length from the third and fourth bytes (big-endian)
+  //ushort totalLength = to!(ushort)([header[2], header[3]]); // Combine bytes
+  uint16_t totalLength = (header[2] + header[3]);
+  writeln("IP Version: ", v1);
+  writeln("IHL (Header Length in 32-bit words): ", ihl);
+  writeln("Header Length (bytes): ", ihl * 4);
+  writeln("TOS (Type of Service): ", tos);
+  writeln("Total Length: ", totalLength);
 }
 
 enum IPV4_HEADER_LENGTH = 20; // minimum IP header length if there is an option fields we can append
 
-
 enum IPV4_FIELD_OFFSETS
 {
-    Version        = 0,
-    IHL            = 4,
-    TOS            = 8,
-    TotalLength    = 16,
-    Identification = 32,
-    FlagsFragOff   = 48,
-    TTL            = 64,
-    Protocol       = 72,
-    HeaderChecksum = 80,
-    SourceAddr     = 96,
-    DestAddr       = 128
+  Version = 0,
+  IHL = 4,
+  TOS = 8,
+  TotalLength = 16,
+  Identification = 32,
+  FlagsFragOff = 48,
+  TTL = 64,
+  Protocol = 72,
+  HeaderChecksum = 80,
+  SourceAddr = 96,
+  DestAddr = 128
 }
 
 enum IPV4_FIELD_LENGTHS
 {
-    Version        = 4,
-    IHL            = 4,
-    TOS            = 8,
-    TotalLength    = 16,
-    Identification = 16,
-    FlagsFragOff   = 16,
-    TTL            = 8,
-    Protocol       = 8,
-    HeaderChecksum = 16,
-    SourceAddr     = 32,
-    DestAddr       = 32
+  Version = 4,
+  IHL = 4,
+  TOS = 8,
+  TotalLength = 16,
+  Identification = 16,
+  FlagsFragOff = 16,
+  TTL = 8,
+  Protocol = 8,
+  HeaderChecksum = 16,
+  SourceAddr = 32,
+  DestAddr = 32
 }
-
 
 /** 
  * Each header field in the tcp has a specific length and offset
  */
 
-struct IPV4_PACKETS
+struct IPV4_PACKET
 {
   ubyte[IPV4_FIELD_LENGTHS.Version] ver;
   ubyte[IPV4_FIELD_LENGTHS.IHL] ihl;
@@ -144,5 +141,53 @@ struct IPV4_PACKETS
   ubyte[IPV4_FIELD_LENGTHS.SourceAddr] sourceaddr;
   ubyte[IPV4_FIELD_LENGTHS.DestAddr] destaddr;
   ubyte[] data;
-  
+
+}
+
+IPV4_PACKET getIPV4Packets(ref PACKET_DATA pd)
+{
+  IPV4_PACKET ip;
+  ubyte[IPV4_HEADER_LENGTH] header = pd.data[MAC_HEADER .. $];
+  ip.ver = header[
+    IPV4_FIELD_OFFSETS.Version .. IPV4_FIELD_OFFSETS.Version + IPV4_FIELD_LENGTHS.Version
+  ];
+  ip.ihl = header[
+    IPV4_FIELD_OFFSETS.IHL .. IPV4_FIELD_OFFSETS.IHL + IPV4_FIELD_LENGTHS.IHL
+  ];
+  ip.tos = header[
+    IPV4_FIELD_OFFSETS.TOS .. IPV4_FIELD_OFFSETS.TOS + IPV4_FIELD_LENGTHS.TOS
+  ];
+  ip.totallength = header[
+    IPV4_FIELD_OFFSETS.TotalLength .. IPV4_FIELD_OFFSETS.TotalLength + IPV4_FIELD_LENGTHS
+    .TotalLength
+  ];
+  ip.identification = header[
+    IPV4_FIELD_OFFSETS.Identification .. IPV4_FIELD_OFFSETS.Identification + IPV4_FIELD_LENGTHS
+    .Identification
+  ];
+  ip.flagsfragoff = header[
+    IPV4_FIELD_OFFSETS.FlagsFragOff .. IPV4_FIELD_OFFSETS.FlagsFragOff + IPV4_FIELD_LENGTHS
+    .FlagsFragOff
+  ];
+  ip.ttl = header[
+    IPV4_FIELD_OFFSETS.TTL .. IPV4_FIELD_OFFSETS.TTL + IPV4_FIELD_LENGTHS.TTL
+  ];
+  ip.protocol = header[
+    IPV4_FIELD_OFFSETS.Protocol .. IPV4_FIELD_OFFSETS.Protocol + IPV4_FIELD_LENGTHS.Protocol
+  ];
+  ip.headerchecksum = header[
+    IPV4_FIELD_OFFSETS.HeaderChecksum .. IPV4_FIELD_OFFSETS.HeaderChecksum + IPV4_FIELD_LENGTHS
+    .HeaderChecksum
+  ];
+  ip.sourceaddr = header[
+    IPV4_FIELD_OFFSETS.SourceAddr .. IPV4_FIELD_OFFSETS.SourceAddr + IPV4_FIELD_LENGTHS.SourceAddr
+  ];
+  ip.destaddr = header[
+    IPV4_FIELD_OFFSETS.DestAddr .. IPV4_FIELD_OFFSETS.DestAddr + IPV4_FIELD_LENGTHS.DestAddr
+  ];
+
+  uint16_t length = system.convert_u16(ip.totallength, ENDIAN.BIG);
+
+  return ip;
+
 }

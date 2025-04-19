@@ -36,6 +36,7 @@ ENDIAN determineEndian(File f)
 {
     ubyte[MAGIC_HEADER_LENGTH] magic;
         // interpret as little endian
+    f.rawRead(magic);
     uint32_t magicLittle = 
         (cast(uint32_t)magic[0]) |
         (cast(uint32_t)magic[1] << 8) |
