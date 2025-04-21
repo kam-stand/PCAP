@@ -31,15 +31,12 @@ struct ETHERNET_HEADER
 
 ETHERNET_HEADER getEthernetHeader(ref PACKET_DATA pd, ENDIAN e)
 {
-  writeln(pd);
-
+  
   ETHERNET_HEADER eh;
   ubyte[] header = pd.data[0 .. MAC_HEADER];
   eh.dest = header[MAC_HEADER_OFFSETS.DEST .. MAC_HEADER_OFFSETS.SOURCE];
   eh.source = header[MAC_HEADER_OFFSETS.SOURCE .. MAC_HEADER_OFFSETS.LENGTH];
   eh.length_type = header[MAC_HEADER_OFFSETS.LENGTH .. $];
-  writeln(eh);
-  printIp(pd);
   return eh;
 }
 
@@ -147,47 +144,10 @@ struct IPV4_PACKET
 IPV4_PACKET getIPV4Packets(ref PACKET_DATA pd)
 {
   IPV4_PACKET ip;
-  ubyte[IPV4_HEADER_LENGTH] header = pd.data[MAC_HEADER .. $];
-  ip.ver = header[
-    IPV4_FIELD_OFFSETS.Version .. IPV4_FIELD_OFFSETS.Version + IPV4_FIELD_LENGTHS.Version
-  ];
-  ip.ihl = header[
-    IPV4_FIELD_OFFSETS.IHL .. IPV4_FIELD_OFFSETS.IHL + IPV4_FIELD_LENGTHS.IHL
-  ];
-  ip.tos = header[
-    IPV4_FIELD_OFFSETS.TOS .. IPV4_FIELD_OFFSETS.TOS + IPV4_FIELD_LENGTHS.TOS
-  ];
-  ip.totallength = header[
-    IPV4_FIELD_OFFSETS.TotalLength .. IPV4_FIELD_OFFSETS.TotalLength + IPV4_FIELD_LENGTHS
-    .TotalLength
-  ];
-  ip.identification = header[
-    IPV4_FIELD_OFFSETS.Identification .. IPV4_FIELD_OFFSETS.Identification + IPV4_FIELD_LENGTHS
-    .Identification
-  ];
-  ip.flagsfragoff = header[
-    IPV4_FIELD_OFFSETS.FlagsFragOff .. IPV4_FIELD_OFFSETS.FlagsFragOff + IPV4_FIELD_LENGTHS
-    .FlagsFragOff
-  ];
-  ip.ttl = header[
-    IPV4_FIELD_OFFSETS.TTL .. IPV4_FIELD_OFFSETS.TTL + IPV4_FIELD_LENGTHS.TTL
-  ];
-  ip.protocol = header[
-    IPV4_FIELD_OFFSETS.Protocol .. IPV4_FIELD_OFFSETS.Protocol + IPV4_FIELD_LENGTHS.Protocol
-  ];
-  ip.headerchecksum = header[
-    IPV4_FIELD_OFFSETS.HeaderChecksum .. IPV4_FIELD_OFFSETS.HeaderChecksum + IPV4_FIELD_LENGTHS
-    .HeaderChecksum
-  ];
-  ip.sourceaddr = header[
-    IPV4_FIELD_OFFSETS.SourceAddr .. IPV4_FIELD_OFFSETS.SourceAddr + IPV4_FIELD_LENGTHS.SourceAddr
-  ];
-  ip.destaddr = header[
-    IPV4_FIELD_OFFSETS.DestAddr .. IPV4_FIELD_OFFSETS.DestAddr + IPV4_FIELD_LENGTHS.DestAddr
-  ];
 
-  uint16_t length = system.convert_u16(ip.totallength, ENDIAN.BIG);
-
+  ubyte[IPV4_HEADER_LENGTH] header;
+  header = pd.data[MAC_HEADER .. MAC_HEADER + IPV4_HEADER_LENGTH];
+  writefln("Size of ipv4 packet %d", header.length);
   return ip;
 
 }
