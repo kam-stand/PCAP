@@ -117,13 +117,16 @@ struct PACKET_DATA
   ubyte[] data;
 }
 
+static PACKET_DATA[] PCAP_PACKETS;
+static size_t PACKET_COUNT = 0;
+
+
 PACKET_DATA getPacketData(ref File f, ENDIAN e, ref PACKET_HEADER ph)
 {
   PACKET_DATA pd;
   pd.header = ph;
   pd.data = new ubyte[](ph.capturedLength);
   f.rawRead(pd.data);
-
   return pd;
 }
 

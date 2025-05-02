@@ -10,8 +10,6 @@ void main(string[] args)
     writefln("File is %s endian", e);
     FILE_HEADER fh = getFileHeader(f, e);
 
-    static PACKET_DATA[] PCAP_PACKETS;
-    size_t PACKET_COUNT = 0;
 
     while (!(f.eof()))
     {
