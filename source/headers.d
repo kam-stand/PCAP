@@ -112,7 +112,8 @@ PACKET_HEADER getPacketHeader(ref File f, ENDIAN e)
 
 struct PACKET_DATA
 {
-  PACKET_HEADER header; 
+  size_t index;
+  PACKET_HEADER header;
   ubyte[] data;
 }
 
@@ -120,8 +121,9 @@ PACKET_DATA getPacketData(ref File f, ENDIAN e, ref PACKET_HEADER ph)
 {
   PACKET_DATA pd;
   pd.header = ph;
-  pd.data =  new ubyte[](ph.capturedLength);
+  pd.data = new ubyte[](ph.capturedLength);
   f.rawRead(pd.data);
+
   return pd;
 }
 

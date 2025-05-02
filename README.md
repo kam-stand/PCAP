@@ -1,25 +1,26 @@
-# PCAP command line tool and library 
+# PCAP command line tool and library
 
 a command line tool and library that can be used to extract and analyze `.pcap` file similar to wireshark and tcpdump
 
 # Utility
 
-1. read in pcap file and provide generic way to get all packet data 
+1. read in pcap file and provide generic way to get all packet data
 2. provide reasonable layout to view and inspect packet data similar to [wireshark](https://www.wireshark.org/) and [tcpdump](https://www.tcpdump.org/)
-
-
+3. provide functionality to easily parse pcap files
 
 # How to run
 
 1. install a D lang compiler from the following [link](https://dlang.org/download.html)
 
-2. clone the repository 
+2. clone the repository
 
 ```sh
 git clone https://github.com/kam-stand/PCAP.git
 
 ```
+
 3. `cd` into project directory
+
 ```sh
 cd PCAP_DUMP
 ```
@@ -35,24 +36,25 @@ cd PCAP_DUMP
 
 # Information
 
-- When reading on ethernet frames and different link types. its important to note we are mostly reading data that is being transmitted from physical wires or wireless communication. In a `.pcap` file we are capturing from the end of  this transmission into a computer. Hence, the preamble and  sfd are not present :alien:
+- When reading on ethernet frames and different link types. its important to note we are mostly reading data that is being transmitted from physical wires or wireless communication. In a `.pcap` file we are capturing from the end of this transmission into a computer. Hence, the preamble and sfd are not present :alien:
 
 🧩 The Key Distinction: File Format vs Protocol Format
 
 There are two layers here:
+
 1. PCAP file format = endianness depends on the magic number
 
-    The PCAP file format starts with a magic number in the first 4 bytes.
+   The PCAP file format starts with a magic number in the first 4 bytes.
 
-    That number tells you how the rest of the file should be interpreted (endianness-wise).
+   That number tells you how the rest of the file should be interpreted (endianness-wise).
 
-    So for things like packet headers, timestamps, and lengths — yes, you must honor this endianness.
+   So for things like packet headers, timestamps, and lengths — yes, you must honor this endianness.
 
 2. Network protocols (Ethernet, IP, TCP, etc.) = always big-endian
 
-    Once you're inside the packet data (like the Ethernet frame), the protocol itself dictates network byte order.
+   Once you're inside the packet data (like the Ethernet frame), the protocol itself dictates network byte order.
 
-    And network byte order = big-endian, always — regardless of what the pcap file's endianness is.
+   And network byte order = big-endian, always — regardless of what the pcap file's endianness is.
 
 # Resources
 
@@ -74,15 +76,13 @@ certain network protocols come with different formats. The following diagrams pr
 
 ![IEEE 802.3](./assets/What-is-Ethernet-Frame-Format-Diagram.jpg)
 
-❗ The format for a IEEE 802.3 Link type can be summarized in both as a data link and logical link header. The following [link](https://www.firewall.cx/networking/ethernet/ieee-8023-frame.html) showcases this. Furthermore, the diagram 
+❗ The format for a IEEE 802.3 Link type can be summarized in both as a data link and logical link header. The following [link](https://www.firewall.cx/networking/ethernet/ieee-8023-frame.html) showcases this. Furthermore, the diagram
 below shows the different way to interpret the actual payload
 
 ![IEEE 802.3 FRAME FORMAT](./assets/IEEE_802.3_FORMAT.jpg)
 
-
 format of an IP packet
 
 ![IP DATAGRAM](./assets/ip-packet-header-fields.png)
-
 
 ![Detailed IPV4 packet](./assets/IPv4_Packet-en.svg.png)
