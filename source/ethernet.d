@@ -55,40 +55,7 @@ enum DATAGRAM_TYPE
   IPV6 = 0x86dd
 }
 
-void printIp(ref PACKET_DATA pd)
-{
-  ubyte[] ipDatagram = pd.data[MAC_HEADER .. $];
-  writeln("IP Datagram Length: ", ipDatagram.length);
-  writeln("IP Datagram (bytes): ", ipDatagram);
-
-  if (ipDatagram.length < 20)
-  {
-    writeln("Error: IP datagram too short to contain a full header.");
-    return;
-  }
-
-  ubyte[] header = ipDatagram[0 .. IPV4_HEADER_LENGTH];
-  writeln("First 3 bytes of header: ", header[0 .. 3]); // Corrected slice
-
-  // Extract Version and IHL from the first byte
-  ubyte versionIhlByte = header[0];
-  ubyte v1 = versionIhlByte >> 4; // Shift right by 4 bits to get the version
-  ubyte ihl = versionIhlByte & 0x0F; // Mask with 00001111 to get the IHL
-
-  // Extract TOS (Type of Service) from the second byte
-  ubyte tos = header[1];
-
-  // Extract Total Length from the third and fourth bytes (big-endian)
-  //ushort totalLength = to!(ushort)([header[2], header[3]]); // Combine bytes
-  uint16_t totalLength = (header[2] + header[3]);
-  writeln("IP Version: ", v1);
-  writeln("IHL (Header Length in 32-bit words): ", ihl);
-  writeln("Header Length (bytes): ", ihl * 4);
-  writeln("TOS (Type of Service): ", tos);
-  writeln("Total Length: ", totalLength);
-}
-
-enum IPV4_HEADER_LENGTH = 20; // minimum IP header length if there is an option fields we can append
+enum IPV4_HEADER_LENGTH = 20; // minimum IP header length
 
 enum IPV4_FIELD_OFFSETS
 {
