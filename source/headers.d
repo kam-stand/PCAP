@@ -103,12 +103,25 @@ enum PACKET_HEADER_OFFSETS
   OG_LEN = 12
 }
 
+PACKET_HEADER get_packet_header(FILE *f, ENDIAN e) @nogc
+{
+  ubyte[PACKET_HEADER_LENGTH] buffer;
+  fread(buffer.ptr, 1,PACKET_HEADER_LENGTH, f);
+  PACKET_HEADER ph;
+  ph.seconds = convert_u32(buffer[PACKET_HEADER_OFFSETS.SECONDS .. PACKET_HEADER_OFFSETS.SECONDS + BYTE_OFFSET], e);
+  ph.micro_nano = convert_u32(buffer[PACKET_HEADER_OFFSETS.MICRO_NANO .. PACKET_HEADER_OFFSETS.MICRO_NANO + BYTE_OFFSET], e);
+  ph.capturedLength = convert_u32(buffer[PACKET_HEADER_OFFSETS.CAP_LEN .. PACKET_HEADER_OFFSETS.CAP_LEN + BYTE_OFFSET], e);
+  ph.originalLength = convert_u32(buffer[PACKET_HEADER_OFFSETS.OG_LEN .. PACKET_HEADER_OFFSETS.OG_LEN + BYTE_OFFSET], e);
+
+  return ph;
+}
+
 
 struct PACKET_DATA
 {
-  size_t index;
-  PACKET_HEADER header;
   ubyte* data;
+  PACKET_DATA *next;
+  PACKET_DATA *prev;
 }
 
 
