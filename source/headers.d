@@ -100,14 +100,6 @@ enum PACKET_HEADER_OFFSETS
 
 PACKET_HEADER getPacketHeader(ref File f, ENDIAN e)
 {
-  ubyte[PACKET_HEADER_LENGTH] header;
-  f.rawRead(header);
-  PACKET_HEADER ph;
-  ph.seconds = convert_u32(header[PACKET_HEADER_OFFSETS.SECONDS .. $], e);
-  ph.micro_nano = convert_u32(header[PACKET_HEADER_OFFSETS.MICRO_NANO .. $], e);
-  ph.capturedLength = convert_u32(header[PACKET_HEADER_OFFSETS.CAP_LEN .. $], e);
-  ph.originalLength = convert_u32(header[PACKET_HEADER_OFFSETS.OG_LEN .. $], e);
-  return ph;
 }
 
 struct PACKET_DATA
@@ -123,10 +115,7 @@ static size_t PACKET_COUNT = 0;
 
 PACKET_DATA getPacketData(ref File f, ENDIAN e, ref PACKET_HEADER ph)
 {
-  PACKET_DATA pd;
-  pd.header = ph;
-  pd.data = new ubyte[](ph.capturedLength);
-  f.rawRead(pd.data);
-  return pd;
 }
+
+
 
