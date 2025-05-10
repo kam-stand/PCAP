@@ -42,12 +42,28 @@ enum FILE_HEADER_LENGTH = 24; // the file header for pcap is 24 octets/bytes
 enum FILE_HEADER_OFFSETS
 {
   MAGIC = 0,
-  MAJOR_MINOR = 4,
+  MAJOR = 4,
+  MINOR = 6,
   SNAP_LEN = 16,
   LINK_TYPE = 20
 }
 
 enum BYTE_OFFSET = 4;
+
+
+
+FILE_HEADER get_file_header(FILE *f, ENDIAN e) @nogc
+{
+  ubyte[FILE_HEADER_LENGTH] buffer;
+  fread(buffer.ptr, 1, FILE_HEADER_LENGTH, f);
+  FILE_HEADER file_header;
+  file_header.magic = convert_u32(buffer[FILE_HEADER_OFFSETS.MAGIC..FILE_HEADER_OFFSETS.MAGIC+BYTE_OFFSET], e);
+  file_header.major = convert_u16(buffer[FILE_HEADER_OFFSETS.MAJOR..FILE_HEADER_OFFSETS.MAJOR+BYTE_OFFSET/2], e);
+  file_header.minor = convert_u16(buffer[FILE_HEADER_OFFSETS.MINOR..FILE_HEADER_OFFSETS.MINOR+BYTE_OFFSET/2], e);
+  file_header.snapLen = convert_u32(buffer[FILE_HEADER_OFFSETS.SNAP_LEN..FILE_HEADER_OFFSETS.SNAP_LEN+BYTE_OFFSET], e);
+  file_header.linkType = convert_u16(buffer[FILE_HEADER_OFFSETS.LINK_TYPE..FILE_HEADER_OFFSETS.LINK_TYPE+BYTE_OFFSET/2],e);
+  return file_header;
+}
 
 
 /*
@@ -92,11 +108,9 @@ struct PACKET_DATA
 {
   size_t index;
   PACKET_HEADER header;
-  ubyte[] data;
+  ubyte* data;
 }
 
-static PACKET_DATA[] PCAP_PACKETS;
-static size_t PACKET_COUNT = 0;
 
 
 
