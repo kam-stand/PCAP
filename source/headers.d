@@ -1,7 +1,11 @@
 module headers;
 import system;
-import std.stdio;
-import std.stdint;
+
+import core.stdc.stdio;
+import core.stdc.stdint;
+import core.stdc.stdlib;
+
+
 
 /**
                            1                   2                   3
@@ -45,21 +49,6 @@ enum FILE_HEADER_OFFSETS
 
 enum BYTE_OFFSET = 4;
 
-FILE_HEADER getFileHeader(ref File f, ENDIAN e)
-{
-  ubyte[FILE_HEADER_LENGTH] header;
-  f.rawRead(header);
-
-  FILE_HEADER fh;
-  fh.magic = convert_u32(header[FILE_HEADER_OFFSETS.MAGIC .. $], e);
-  fh.major = convert_u16(header[FILE_HEADER_OFFSETS.MAJOR_MINOR .. $][0 .. 2], e);
-  fh.minor = convert_u16(header[FILE_HEADER_OFFSETS.MAJOR_MINOR .. $][2 .. $], e);
-  fh.snapLen = convert_u32(header[FILE_HEADER_OFFSETS.SNAP_LEN .. $], e);
-  fh.linkType = convert_u16(header[FILE_HEADER_OFFSETS.LINK_TYPE .. $], e);
-
-  return fh;
-
-}
 
 /*
                           1                   2                   3
@@ -98,9 +87,6 @@ enum PACKET_HEADER_OFFSETS
   OG_LEN = 12
 }
 
-PACKET_HEADER getPacketHeader(ref File f, ENDIAN e)
-{
-}
 
 struct PACKET_DATA
 {
@@ -113,9 +99,6 @@ static PACKET_DATA[] PCAP_PACKETS;
 static size_t PACKET_COUNT = 0;
 
 
-PACKET_DATA getPacketData(ref File f, ENDIAN e, ref PACKET_HEADER ph)
-{
-}
 
 
 
