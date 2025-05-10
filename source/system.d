@@ -31,12 +31,13 @@ enum ENDIAN : int
 
 enum MAGIC_HEADER_LENGTH = 4; // first 4 bytes are the magic numbers
 
-ENDIAN determineEndian(FILE* f)
+ENDIAN determineEndian(char *file_name)
 {
+    FILE *fp = fopen(file_name, "rb");
     ubyte[MAGIC_HEADER_LENGTH] buffer;
-    size_t bytesRead = fread(buffer.ptr, 1, MAGIC_HEADER_LENGTH, f);
+    size_t bytesRead = fread(buffer.ptr, 1, MAGIC_HEADER_LENGTH, fp);
     assert(bytesRead == MAGIC_HEADER_LENGTH);
-    
+
     uint littleEndian =
         cast(uint) buffer[0] |
         (cast(uint) buffer[1] << 8) |
@@ -50,17 +51,20 @@ ENDIAN determineEndian(FILE* f)
 
     if (bigEndian == 0xA1B2C3D4 || bigEndian == 0xA1B23C4D)
     {
+        fclose(fp);
         return ENDIAN.BIG;
     }
     else if (littleEndian == 0xA1B2C3D4 || littleEndian == 0xA1B23C4D)
     {
+        fclose(fp);
         return ENDIAN.LITTLE;
     }
     else
     {
+        fclose(fp);
         return ENDIAN.INVALID;
     }
-
+    fclose(fp);
     return ENDIAN.INVALID;
 
 }
