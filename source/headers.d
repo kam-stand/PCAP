@@ -5,8 +5,6 @@ import core.stdc.stdio;
 import core.stdc.stdint;
 import core.stdc.stdlib;
 
-
-
 /**
                            1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -50,21 +48,23 @@ enum FILE_HEADER_OFFSETS
 
 enum BYTE_OFFSET = 4;
 
-
-
-FILE_HEADER get_file_header(FILE *f, ENDIAN e) @nogc
+FILE_HEADER get_file_header(FILE* f, ENDIAN e) @nogc
 {
   ubyte[FILE_HEADER_LENGTH] buffer;
   fread(buffer.ptr, 1, FILE_HEADER_LENGTH, f);
   FILE_HEADER file_header;
-  file_header.magic = convert_u32(buffer[FILE_HEADER_OFFSETS.MAGIC..FILE_HEADER_OFFSETS.MAGIC+BYTE_OFFSET], e);
-  file_header.major = convert_u16(buffer[FILE_HEADER_OFFSETS.MAJOR..FILE_HEADER_OFFSETS.MAJOR+BYTE_OFFSET/2], e);
-  file_header.minor = convert_u16(buffer[FILE_HEADER_OFFSETS.MINOR..FILE_HEADER_OFFSETS.MINOR+BYTE_OFFSET/2], e);
-  file_header.snapLen = convert_u32(buffer[FILE_HEADER_OFFSETS.SNAP_LEN..FILE_HEADER_OFFSETS.SNAP_LEN+BYTE_OFFSET], e);
-  file_header.linkType = convert_u16(buffer[FILE_HEADER_OFFSETS.LINK_TYPE..FILE_HEADER_OFFSETS.LINK_TYPE+BYTE_OFFSET/2],e);
+  file_header.magic = convert_u32(
+    buffer[FILE_HEADER_OFFSETS.MAGIC .. FILE_HEADER_OFFSETS.MAGIC + BYTE_OFFSET], e);
+  file_header.major = convert_u16(
+    buffer[FILE_HEADER_OFFSETS.MAJOR .. FILE_HEADER_OFFSETS.MAJOR + BYTE_OFFSET / 2], e);
+  file_header.minor = convert_u16(
+    buffer[FILE_HEADER_OFFSETS.MINOR .. FILE_HEADER_OFFSETS.MINOR + BYTE_OFFSET / 2], e);
+  file_header.snapLen = convert_u32(
+    buffer[FILE_HEADER_OFFSETS.SNAP_LEN .. FILE_HEADER_OFFSETS.SNAP_LEN + BYTE_OFFSET], e);
+  file_header.linkType = convert_u16(
+    buffer[FILE_HEADER_OFFSETS.LINK_TYPE .. FILE_HEADER_OFFSETS.LINK_TYPE + BYTE_OFFSET / 2], e);
   return file_header;
 }
-
 
 /*
                           1                   2                   3
@@ -103,28 +103,82 @@ enum PACKET_HEADER_OFFSETS
   OG_LEN = 12
 }
 
-PACKET_HEADER get_packet_header(FILE *f, ENDIAN e) @nogc
+PACKET_HEADER get_packet_header(FILE* f, ENDIAN e) @nogc
 {
   ubyte[PACKET_HEADER_LENGTH] buffer;
-  fread(buffer.ptr, 1,PACKET_HEADER_LENGTH, f);
+  fread(buffer.ptr, 1, PACKET_HEADER_LENGTH, f);
   PACKET_HEADER ph;
-  ph.seconds = convert_u32(buffer[PACKET_HEADER_OFFSETS.SECONDS .. PACKET_HEADER_OFFSETS.SECONDS + BYTE_OFFSET], e);
-  ph.micro_nano = convert_u32(buffer[PACKET_HEADER_OFFSETS.MICRO_NANO .. PACKET_HEADER_OFFSETS.MICRO_NANO + BYTE_OFFSET], e);
-  ph.capturedLength = convert_u32(buffer[PACKET_HEADER_OFFSETS.CAP_LEN .. PACKET_HEADER_OFFSETS.CAP_LEN + BYTE_OFFSET], e);
-  ph.originalLength = convert_u32(buffer[PACKET_HEADER_OFFSETS.OG_LEN .. PACKET_HEADER_OFFSETS.OG_LEN + BYTE_OFFSET], e);
+  ph.seconds = convert_u32(
+    buffer[PACKET_HEADER_OFFSETS.SECONDS .. PACKET_HEADER_OFFSETS.SECONDS + BYTE_OFFSET], e);
+  ph.micro_nano = convert_u32(
+    buffer[PACKET_HEADER_OFFSETS.MICRO_NANO .. PACKET_HEADER_OFFSETS.MICRO_NANO + BYTE_OFFSET], e);
+  ph.capturedLength = convert_u32(
+    buffer[PACKET_HEADER_OFFSETS.CAP_LEN .. PACKET_HEADER_OFFSETS.CAP_LEN + BYTE_OFFSET], e);
+  ph.originalLength = convert_u32(
+    buffer[PACKET_HEADER_OFFSETS.OG_LEN .. PACKET_HEADER_OFFSETS.OG_LEN + BYTE_OFFSET], e);
 
   return ph;
 }
 
-
 struct PACKET_DATA
 {
+  int id;
   ubyte* data;
-  PACKET_DATA *next;
-  PACKET_DATA *prev;
+  PACKET_DATA* next;
+  PACKET_DATA* prev;
+}
+
+static int PACKET_COUNT = 0;
+static PACKET_DATA* head;
+
+
+
+
+int add_packet(PACKET_DATA* packet, FILE* f)
+{
+
+  if (packet == null || f == null)
+  {
+    return -1;
+  }
+
+  if (PACKET_COUNT == 0 || head == null)
+  {
+    head = cast(PACKET_DATA*) malloc(PACKET_DATA.sizeof);
+    head.next = head;
+    head.prev = head;
+  }
+  packet.next = head;
+  packet.prev = head.prev;
+  head.prev.next = packet;
+  head.prev = packet;
+  packet.id = PACKET_COUNT++;
+
+  return 0;
 }
 
 
+PACKET_DATA *get_packet_data(PACKET_HEADER packet_header, FILE *f)
+{
+  if (packet_header.capturedLength <= 0 || f == null)
+  {
+    return null;
+  }
+
+  PACKET_DATA *packet = cast(PACKET_DATA *)malloc(PACKET_DATA.sizeof);
+  if (packet == null)
+  {
+    return null;
+  }
+  packet.data = cast(ubyte *)malloc(ubyte.sizeof * packet_header.capturedLength);
+  if (packet.data == null)
+  {
+    return null;
+  }
+  fread(packet.data, 1, packet_header.capturedLength, f);
+
+  return packet;
+}
 
 
 
