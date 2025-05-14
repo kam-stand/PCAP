@@ -29,7 +29,7 @@ struct ETHERNET_HEADER
   ubyte[2] length_type;
 }
 
-ETHERNET_HEADER getEthernetHeader(ref PACKET_DATA pd, ENDIAN e)
+ETHERNET_HEADER getEthernetHeader(PACKET_DATA *pd, ENDIAN e) @nogc
 {
   
   ETHERNET_HEADER eh;
@@ -50,7 +50,7 @@ enum ETHERNET_FRAME
 enum DATAGRAM_TYPE
 {
   IPV4 = 0x0800,
-  ARP = 0x0806,
-  IPX = 0x8137,
+  ARP =  0x0806,
+  IPX =  0x8137,
   IPV6 = 0x86dd
 }
