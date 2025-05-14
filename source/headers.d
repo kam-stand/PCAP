@@ -103,11 +103,11 @@ enum PACKET_HEADER_OFFSETS
   OG_LEN = 12
 }
 
-PACKET_HEADER get_packet_header(FILE* f, ENDIAN e) @nogc
+PACKET_HEADER* get_packet_header(FILE* f, ENDIAN e) @nogc
 {
   ubyte[PACKET_HEADER_LENGTH] buffer;
   fread(buffer.ptr, 1, PACKET_HEADER_LENGTH, f);
-  PACKET_HEADER ph;
+  PACKET_HEADER* ph = cast(PACKET_HEADER*) malloc(PACKET_HEADER.sizeof);
   ph.seconds = convert_u32(
     buffer[PACKET_HEADER_OFFSETS.SECONDS .. PACKET_HEADER_OFFSETS.SECONDS + BYTE_OFFSET], e);
   ph.micro_nano = convert_u32(
@@ -123,6 +123,7 @@ PACKET_HEADER get_packet_header(FILE* f, ENDIAN e) @nogc
 struct PACKET_DATA
 {
   int id;
+  PACKET_HEADER* packet_header;
   ubyte* data;
   PACKET_DATA* next;
   PACKET_DATA* prev;
@@ -131,55 +132,109 @@ struct PACKET_DATA
 static int PACKET_COUNT = 0;
 static PACKET_DATA* head;
 
-
-
-
-int add_packet(PACKET_DATA* packet, FILE* f)
+PACKET_DATA* get_packet_data(FILE* f, PACKET_HEADER* packet_header) @nogc
 {
+  PACKET_DATA* packet_data = cast(PACKET_DATA*) malloc(PACKET_DATA.sizeof);
+  if (packet_data is null)
+  {
+    free(packet_data);
+    return null;
+  }
+  ubyte* data = cast(ubyte*) malloc(ubyte.sizeof * packet_header.capturedLength);
+  if (data is null)
+  {
+    free(data);
+    return null;
+  }
+  size_t bytes_read = fread(data, 1, packet_header.capturedLength, f);
+  if (bytes_read != packet_header.capturedLength)
+  {
+    free(data);
+    free(packet_data);
+    return null;
+  }
+  packet_data.data = data;
+  packet_data.packet_header = packet_header;
+  return packet_data;
+}
 
-  if (packet == null || f == null)
+int add_packet_data(PACKET_DATA* packet_data) @nogc
+{
+  if (packet_data is null)
   {
     return -1;
   }
-
-  if (PACKET_COUNT == 0 || head == null)
+  packet_data.id = PACKET_COUNT++;
+  if (head is null)
   {
-    head = cast(PACKET_DATA*) malloc(PACKET_DATA.sizeof);
-    head.next = head;
-    head.prev = head;
+    head = packet_data;
+    head.next = packet_data;
+    head.prev = packet_data;
+    return 1;
   }
-  packet.next = head;
-  packet.prev = head.prev;
-  head.prev.next = packet;
-  head.prev = packet;
-  packet.id = PACKET_COUNT++;
+  else
+  {
+    packet_data.next = head;
+    packet_data.prev = head.prev;
+    head.prev.next = packet_data;
+    head.prev = packet_data;
+    return 1;
+  }
 
-  return 0;
+  return -1;
 }
 
-
-PACKET_DATA *get_packet_data(PACKET_HEADER packet_header, FILE *f)
+void read_file(FILE* fp, ENDIAN e) @nogc
 {
-  if (packet_header.capturedLength <= 0 || f == null)
+  while (!(feof(fp)))
   {
-    return null;
+    PACKET_HEADER* packet_header = get_packet_header(fp, e);
+    if (packet_header is null)
+    {
+      free(packet_header);
+      break;
+    }
+
+    PACKET_DATA* packet_data = get_packet_data(fp, packet_header);
+    if (packet_data is null)
+    {
+      free(packet_data);
+      break;
+    }
+
+    if (add_packet_data(packet_data) < 0)
+    {
+      break;
+    }
+
   }
 
-  PACKET_DATA *packet = cast(PACKET_DATA *)malloc(PACKET_DATA.sizeof);
-  if (packet == null)
-  {
-    return null;
-  }
-  packet.data = cast(ubyte *)malloc(ubyte.sizeof * packet_header.capturedLength);
-  if (packet.data == null)
-  {
-    return null;
-  }
-  fread(packet.data, 1, packet_header.capturedLength, f);
-
-  return packet;
+  return;
 }
 
+void traverse_packet_data()
+{
+   if (head is null)
+    return;
 
+  PACKET_DATA* current = head;
 
+  printf("%-10s | %-16s | %-15s\n", 
+    cast(const char*)"Packet ID",
+    cast(const char*)"Bytes Captured",
+    cast(const char*)"Arrival Time");
 
+  printf("-----------+------------------+-------------------\n");
+
+  do
+  {
+    printf("%-10d | %-16d | %u.%06u\n",
+      current.id,
+      current.packet_header.capturedLength,
+      current.packet_header.seconds,
+      current.packet_header.micro_nano);
+
+    current = current.next;
+  }
+  while (current != head);
+}
