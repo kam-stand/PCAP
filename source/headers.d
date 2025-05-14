@@ -238,3 +238,34 @@ void traverse_packet_data()
   }
   while (current != head);
 }
+
+
+void free_packet_data(PACKET_DATA *packet_data)
+{
+  if (packet_data is null )
+  {
+    return;
+  }
+  free(packet_data.packet_header);
+  free(packet_data.data);
+  free(packet_data);
+}
+
+void free_packets()
+{
+  if (head is null)
+    return;
+
+  PACKET_DATA* curr = head;
+  PACKET_DATA* next;
+
+  do
+  {
+    next = curr.next;
+    free_packet_data(curr);
+    curr = next;
+  }
+  while (curr != head);
+
+  head = null;
+}
