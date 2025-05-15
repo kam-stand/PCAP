@@ -10,7 +10,7 @@
 input="$1"
 
 # Compile with debug symbols and no optimization
-ldc2 -g --vgc ./source/*.d -of=bin/pcap
+ldc2 -g ./source/*.d -of=bin/pcap
 
 # Run with Valgrind
 valgrind --leak-check=full --track-origins=yes ./bin/pcap "$input"
