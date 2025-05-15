@@ -18,5 +18,7 @@ extern(C) int main(int argc, char **argv)
     read_file(f, e);
     traverse_packet_data();
 
+    
+    free_packets();
     return 0;
 }

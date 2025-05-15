@@ -238,3 +238,63 @@ void traverse_packet_data()
   }
   while (current != head);
 }
+
+PACKET_DATA *get_packet(int id)
+{
+  if (id < 0 || head is null)
+  {
+    return null;
+  }
+
+  
+
+  PACKET_DATA *curr = head.next;
+
+  while (curr != head)
+  {
+    if (curr.id == id)
+    {
+      printf("%-10d | %-16d | %u.%06u\n",
+      curr.id,
+      curr.packet_header.capturedLength,
+      curr.packet_header.seconds,
+      curr.packet_header.micro_nano);
+
+      return curr;
+    }
+
+    curr = curr.next;
+  }
+
+  return null;
+}
+
+
+void free_packets()
+{
+  if (head is null)
+  {
+    return;
+  }
+
+  PACKET_DATA *curr = head.next;
+  PACKET_DATA *next;
+
+  while (curr != head)
+  {
+    next = curr.next;
+    free(curr.packet_header);
+    free(curr.data);
+    free(curr);
+    curr = next;
+  }
+
+  // Free the head node
+  free(head.packet_header);
+  free(head.data);
+  free(head);
+
+  // Reset global state
+  head = null;
+  PACKET_COUNT = 0;
+}
