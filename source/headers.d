@@ -216,30 +216,39 @@ void read_file(FILE* fp, ENDIAN e) @nogc
 
 void traverse_packet_data()
 {
-   if (head is null)
-    return;
+    if (head is null)
+        return;
 
-  PACKET_DATA* current = head;
+    PACKET_DATA* current = head;
 
-  printf("%-10s | %-16s | %-15s\n", 
-    cast(const char*)"Packet ID",
-    cast(const char*)"Bytes Captured",
-    cast(const char*)"Arrival Time");
+    printf("%-10s | %-16s | %-15s | %-17s | %-17s\n", 
+        cast(const char*)"Packet ID",
+        cast(const char*)"Bytes Captured",
+        cast(const char*)"Arrival Time",
+        cast(const char*)"Dest MAC",
+        cast(const char*)"Source MAC");
 
-  printf("-----------+------------------+-------------------\n");
+    printf("-----------+------------------+-----------------+-------------------+-------------------\n");
 
-  do
-  {
-    printf("%-10d | %-16d | %u.%06u\n",
-      current.id,
-      current.packet_header.capturedLength,
-      current.packet_header.seconds,
-      current.packet_header.micro_nano);
+    do
+    {
+        // Format destination MAC
+        ubyte* dest = current.ethernet_header.dest.ptr;
+        ubyte* src  = current.ethernet_header.source.ptr;
 
-    current = current.next;
-  }
-  while (current != head);
+        printf("%-10d | %-16d | %u.%06u | %02X:%02X:%02X:%02X:%02X:%02X | %02X:%02X:%02X:%02X:%02X:%02X\n",
+            current.id,
+            current.packet_header.capturedLength,
+            current.packet_header.seconds,
+            current.packet_header.micro_nano,
+            dest[0], dest[1], dest[2], dest[3], dest[4], dest[5],
+            src[0], src[1], src[2], src[3], src[4], src[5]);
+
+        current = current.next;
+    }
+    while (current != head);
 }
+
 
 PACKET_DATA *get_packet(int id)
 {

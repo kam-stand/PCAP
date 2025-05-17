@@ -40,22 +40,6 @@ void get_ethernet_header(PACKET_DATA *pd)  @nogc
   memcpy(pd.ethernet_header.length_type.ptr, pd.data + MAC_HEADER_OFFSETS.LENGTH, 2);
 
 
-    // Print Destination MAC Address
-    printf("Destination MAC: %02x:%02x:%02x:%02x:%02x:%02x\n",
-        pd.ethernet_header.dest[0], pd.ethernet_header.dest[1],
-        pd.ethernet_header.dest[2], pd.ethernet_header.dest[3],
-        pd.ethernet_header.dest[4], pd.ethernet_header.dest[5]);
-
-    // Print Source MAC Address
-    printf("Source MAC:      %02x:%02x:%02x:%02x:%02x:%02x\n",
-        pd.ethernet_header.source[0], pd.ethernet_header.source[1],
-        pd.ethernet_header.source[2], pd.ethernet_header.source[3],
-        pd.ethernet_header.source[4], pd.ethernet_header.source[5]);
-
-    // Print Length/Type
-    ushort lengthType = (cast(ushort)pd.ethernet_header.length_type[0] << 8) |
-                         pd.ethernet_header.length_type[1];
-    printf("Type/Length:     0x%04x\n", lengthType);
 }
 
 enum ETHERNET_FRAME
