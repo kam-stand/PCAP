@@ -1,0 +1,567 @@
+The endian is 0
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: ff:ff:ff:ff:ff:ff
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0806
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: f8:1e:df:e5:84:3a
+Source MAC:      00:1f:f3:3c:e1:13
+Type/Length:     0x0800
+Destination MAC: 00:1f:f3:3c:e1:13
+Source MAC:      f8:1e:df:e5:84:3a
+Type/Length:     0x0800
+Packet ID  | Bytes Captured   | Arrival Time   
+-----------+------------------+-------------------
+0          | 93               | 1278472579.466743
+1          | 66               | 1278472579.467465
+2          | 66               | 1278472579.488320
+3          | 66               | 1278472579.488369
+4          | 66               | 1278472579.489327
+5          | 66               | 1278472579.489354
+6          | 66               | 1278472579.492985
+7          | 66               | 1278472579.493041
+8          | 78               | 1278472579.508221
+9          | 42               | 1278472580.015741
+10         | 78               | 1278472580.653563
+11         | 78               | 1278472580.748622
+12         | 66               | 1278472580.748680
+13         | 535              | 1278472580.748796
+14         | 66               | 1278472580.847376
+15         | 1514             | 1278472580.858990
+16         | 1514             | 1278472580.873217
+17         | 66               | 1278472580.873271
+18         | 1514             | 1278472580.887700
+19         | 66               | 1278472580.887747
+20         | 81               | 1278472580.917638
+21         | 81               | 1278472580.928160
+22         | 97               | 1278472580.959680
+23         | 1514             | 1278472581.008800
+24         | 1514             | 1278472581.023275
+25         | 66               | 1278472581.023322
+26         | 1514             | 1278472581.037769
+27         | 66               | 1278472581.051175
+28         | 1514             | 1278472581.054791
+29         | 1514             | 1278472581.069306
+30         | 66               | 1278472581.069389
+31         | 78               | 1278472581.071626
+32         | 78               | 1278472581.071695
+33         | 1514             | 1278472581.096884
+34         | 81               | 1278472581.097418
+35         | 70               | 1278472581.097443
+36         | 74               | 1278472581.127587
+37         | 66               | 1278472581.127638
+38         | 572              | 1278472581.127719
+39         | 74               | 1278472581.128536
+40         | 66               | 1278472581.128569
+41         | 561              | 1278472581.128632
+42         | 66               | 1278472581.155849
+43         | 66               | 1278472581.157138
+44         | 1514             | 1278472581.198434
+45         | 66               | 1278472581.198541
+46         | 1514             | 1278472581.199790
+47         | 1514             | 1278472581.200599
+48         | 66               | 1278472581.200664
+49         | 1514             | 1278472581.201399
+50         | 1514             | 1278472581.202192
+51         | 66               | 1278472581.202230
+52         | 1514             | 1278472581.203026
+53         | 66               | 1278472581.203058
+54         | 1514             | 1278472581.203857
+55         | 645              | 1278472581.204419
+56         | 66               | 1278472581.204447
+57         | 1514             | 1278472581.205240
+58         | 1514             | 1278472581.206033
+59         | 66               | 1278472581.206057
+60         | 78               | 1278472581.261381
+61         | 78               | 1278472581.261490
+62         | 74               | 1278472581.285193
+63         | 66               | 1278472581.285267
+64         | 572              | 1278472581.285351
+65         | 74               | 1278472581.289985
+66         | 66               | 1278472581.290056
+67         | 571              | 1278472581.290200
+68         | 1514             | 1278472581.300299
+69         | 1514             | 1278472581.301080
+70         | 66               | 1278472581.301143
+71         | 1514             | 1278472581.301889
+72         | 1514             | 1278472581.302718
+73         | 66               | 1278472581.302784
+74         | 1514             | 1278472581.304190
+75         | 1514             | 1278472581.305104
+76         | 66               | 1278472581.305159
+77         | 1514             | 1278472581.305919
+78         | 1514             | 1278472581.306735
+79         | 66               | 1278472581.306787
+80         | 1514             | 1278472581.321351
+81         | 66               | 1278472581.321417
+82         | 1514             | 1278472581.322414
+83         | 1514             | 1278472581.323233
+84         | 66               | 1278472581.323280
+85         | 66               | 1278472581.323500
+86         | 1514             | 1278472581.324365
+87         | 1514             | 1278472581.325178
+88         | 66               | 1278472581.325201
+89         | 983              | 1278472581.325874
+90         | 66               | 1278472581.325895
+91         | 66               | 1278472581.326158
+92         | 335              | 1278472581.326686
+93         | 66               | 1278472581.326705
+94         | 358              | 1278472581.327202
+95         | 66               | 1278472581.327222
+96         | 459              | 1278472581.426388
+97         | 66               | 1278472581.426437
+98         | 359              | 1278472581.530867
+99         | 66               | 1278472581.530925
+100        | 66               | 1278472581.531719
+101        | 66               | 1278472581.531747
+102        | 617              | 1278472581.577512
+103        | 597              | 1278472581.580736
+104        | 623              | 1278472581.584223
+105        | 334              | 1278472581.607329
+106        | 66               | 1278472581.607385
+107        | 66               | 1278472581.607549
+108        | 336              | 1278472581.608588
+109        | 66               | 1278472581.608612
+110        | 336              | 1278472581.609587
+111        | 66               | 1278472581.609612
+112        | 84               | 1278472581.941306
+113        | 84               | 1278472581.951753
+114        | 100              | 1278472581.956658
+115        | 100              | 1278472581.957454
+116        | 76               | 1278472581.962723
+117        | 76               | 1278472581.972574
+118        | 162              | 1278472581.977141
+119        | 79               | 1278472581.981954
+120        | 95               | 1278472582.043529
+121        | 70               | 1278472582.043585
+122        | 146              | 1278472582.049069
+123        | 70               | 1278472582.049091
+124        | 76               | 1278472582.103072
+125        | 76               | 1278472582.113323
+126        | 86               | 1278472582.156342
+127        | 92               | 1278472582.165740
+128        | 70               | 1278472582.165776
+129        | 92               | 1278472582.167586
+130        | 70               | 1278472582.167609
+131        | 86               | 1278472582.167948
+132        | 81               | 1278472582.176182
+133        | 102              | 1278472582.179388
+134        | 78               | 1278472582.185783
+135        | 86               | 1278472582.193901
+136        | 78               | 1278472582.196084
+137        | 94               | 1278472582.202223
+138        | 78               | 1278472582.214655
+139        | 97               | 1278472582.246264
+140        | 70               | 1278472582.246309

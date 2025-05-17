@@ -1,6 +1,6 @@
 module headers;
 import system;
-
+import ethernet;
 import core.stdc.stdio;
 import core.stdc.stdint;
 import core.stdc.stdlib;
@@ -125,6 +125,7 @@ struct PACKET_DATA
   int id;
   PACKET_HEADER* packet_header;
   ubyte* data;
+  ETHERNET_HEADER ethernet_header;
   PACKET_DATA* next;
   PACKET_DATA* prev;
 }
@@ -189,13 +190,14 @@ void read_file(FILE* fp, ENDIAN e) @nogc
   while (!(feof(fp)))
   {
     PACKET_HEADER* packet_header = get_packet_header(fp, e);
-    if (packet_header is null)
+    if (packet_header is null || packet_header.capturedLength == 0)
     {
       free(packet_header);
       break;
     }
 
     PACKET_DATA* packet_data = get_packet_data(fp, packet_header);
+    get_ethernet_header(packet_data);
     if (packet_data is null)
     {
       free(packet_data);

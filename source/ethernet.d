@@ -3,7 +3,7 @@ import headers;
 import system;
 import core.stdc.stdio;
 import core.stdc.stdint;
-
+import core.stdc.string;
 enum LINK_TYPE : uint16_t
 {
   ETHERNET = 1,
@@ -28,15 +28,34 @@ struct ETHERNET_HEADER
   ubyte[2] length_type;
 }
 
-ETHERNET_HEADER get_ethernet_header(PACKET_DATA *pd) @nogc
+void get_ethernet_header(PACKET_DATA *pd)  @nogc
 {
-  
-  ETHERNET_HEADER eh;
-  ubyte[] header = pd.data[0 .. MAC_HEADER];
-  eh.dest = header[MAC_HEADER_OFFSETS.DEST .. MAC_HEADER_OFFSETS.SOURCE];
-  eh.source = header[MAC_HEADER_OFFSETS.SOURCE .. MAC_HEADER_OFFSETS.LENGTH];
-  eh.length_type = header[MAC_HEADER_OFFSETS.LENGTH .. $];
-  return eh;
+    // pd->data must have at least 14 bytes
+  if (pd is null || pd.data is null)
+    return;
+
+  // Copy bytes safely
+  memcpy(pd.ethernet_header.dest.ptr,   pd.data + MAC_HEADER_OFFSETS.DEST,   6);
+  memcpy(pd.ethernet_header.source.ptr, pd.data + MAC_HEADER_OFFSETS.SOURCE, 6);
+  memcpy(pd.ethernet_header.length_type.ptr, pd.data + MAC_HEADER_OFFSETS.LENGTH, 2);
+
+
+    // Print Destination MAC Address
+    printf("Destination MAC: %02x:%02x:%02x:%02x:%02x:%02x\n",
+        pd.ethernet_header.dest[0], pd.ethernet_header.dest[1],
+        pd.ethernet_header.dest[2], pd.ethernet_header.dest[3],
+        pd.ethernet_header.dest[4], pd.ethernet_header.dest[5]);
+
+    // Print Source MAC Address
+    printf("Source MAC:      %02x:%02x:%02x:%02x:%02x:%02x\n",
+        pd.ethernet_header.source[0], pd.ethernet_header.source[1],
+        pd.ethernet_header.source[2], pd.ethernet_header.source[3],
+        pd.ethernet_header.source[4], pd.ethernet_header.source[5]);
+
+    // Print Length/Type
+    ushort lengthType = (cast(ushort)pd.ethernet_header.length_type[0] << 8) |
+                         pd.ethernet_header.length_type[1];
+    printf("Type/Length:     0x%04x\n", lengthType);
 }
 
 enum ETHERNET_FRAME
